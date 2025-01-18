@@ -17,4 +17,9 @@ public class RecipeServiceImpl implements RecipeService {
     public void addRecipe(Recipe recipe) {
         recipeRepository.save(recipe);
     }
+
+    @Override
+    public Recipe getRecipe() {
+        return recipeRepository.getRecipe();
+    }
 }

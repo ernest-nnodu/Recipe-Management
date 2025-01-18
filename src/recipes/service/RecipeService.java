@@ -4,4 +4,6 @@ import recipes.entity.Recipe;
 
 public interface RecipeService {
     void addRecipe(Recipe recipe);
+
+    Recipe getRecipe();
 }

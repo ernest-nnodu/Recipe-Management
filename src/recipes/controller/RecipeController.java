@@ -16,8 +16,13 @@ public class RecipeController {
     }
 
     @PostMapping
-    public HttpStatus addRecipe(Recipe recipe) {
+    public HttpStatus addRecipe(@RequestBody Recipe recipe) {
         recipeService.addRecipe(recipe);
         return HttpStatus.OK;
+    }
+
+    @GetMapping
+    public Recipe getRecipe() {
+        return recipeService.getRecipe();
     }
 }
