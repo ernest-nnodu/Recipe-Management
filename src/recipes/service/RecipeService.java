@@ -5,5 +5,5 @@ import recipes.entity.Recipe;
 public interface RecipeService {
     int addRecipe(Recipe recipe);
 
-    Recipe getRecipe();
+    Recipe getRecipe(int id);
 }

@@ -23,7 +23,10 @@ public class RecipeRepository {
         return currentId;
     }
 
-    public Recipe getRecipe() {
-        return recipes.get(1);
+    public Recipe getRecipe(int id) {
+        if (id > recipes.size() || id <= 0) {
+            return null;
+        }
+        return recipes.get(id);
     }
 }

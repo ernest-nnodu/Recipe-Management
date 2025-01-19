@@ -26,8 +26,11 @@ public class RecipeController {
       return response;
     }
 
-    @GetMapping
-    public Recipe getRecipe() {
-        return recipeService.getRecipe();
+    @GetMapping("/{id}")
+    public ResponseEntity<Recipe> getRecipe(@PathVariable(name = "id") int id) {
+        Recipe returnedRecipe = recipeService.getRecipe(id);
+
+        return returnedRecipe == null ? new ResponseEntity<>(HttpStatus.NOT_FOUND) :
+                new ResponseEntity<>(returnedRecipe, HttpStatus.OK);
     }
 }
