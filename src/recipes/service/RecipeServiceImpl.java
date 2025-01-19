@@ -14,8 +14,8 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public void addRecipe(Recipe recipe) {
-        recipeRepository.save(recipe);
+    public int addRecipe(Recipe recipe) {
+        return recipeRepository.save(recipe);
     }
 
     @Override

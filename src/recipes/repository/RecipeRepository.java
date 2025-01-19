@@ -9,14 +9,18 @@ import java.util.Map;
 public class RecipeRepository {
 
     private final Map<Integer, Recipe> recipes;
+    private int currentId;
 
     public RecipeRepository(Map<Integer, Recipe> recipes) {
         this.recipes = recipes;
+        currentId = 0;
     }
 
 
-    public void save(Recipe recipe) {
-        recipes.put(1, recipe);
+    public int save(Recipe recipe) {
+        currentId++;
+        recipes.put(currentId, recipe);
+        return currentId;
     }
 
     public Recipe getRecipe() {
