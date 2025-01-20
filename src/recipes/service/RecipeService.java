@@ -1,9 +1,10 @@
 package recipes.service;
 
+import recipes.dto.RecipeDTO;
 import recipes.entity.Recipe;
 
 public interface RecipeService {
-    int addRecipe(Recipe recipe);
+    long addRecipe(Recipe recipe);
 
-    Recipe getRecipe(int id);
+    RecipeDTO getRecipe(long id);
 }

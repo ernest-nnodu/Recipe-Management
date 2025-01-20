@@ -1,8 +1,10 @@
 package recipes.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import recipes.dto.RecipeDTO;
 import recipes.entity.Recipe;
 import recipes.service.RecipeService;
 
@@ -20,17 +22,14 @@ public class RecipeController {
     }
 
     @PostMapping("/new")
-    public Map<String, Integer> addRecipe(@RequestBody Recipe recipe) {
-        Map<String, Integer> response = new HashMap<>();
+    public Map<String, Long> addRecipe(@Valid @RequestBody Recipe recipe) {
+        Map<String, Long> response = new HashMap<>();
         response.put("id", recipeService.addRecipe(recipe));
       return response;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Recipe> getRecipe(@PathVariable(name = "id") int id) {
-        Recipe returnedRecipe = recipeService.getRecipe(id);
-
-        return returnedRecipe == null ? new ResponseEntity<>(HttpStatus.NOT_FOUND) :
-                new ResponseEntity<>(returnedRecipe, HttpStatus.OK);
+    public RecipeDTO getRecipe(@PathVariable(name = "id") long id) {
+        return recipeService.getRecipe(id);
     }
 }
