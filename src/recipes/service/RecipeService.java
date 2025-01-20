@@ -7,4 +7,6 @@ public interface RecipeService {
     long addRecipe(Recipe recipe);
 
     RecipeDTO getRecipe(long id);
+
+    void deleteRecipe(long id);
 }

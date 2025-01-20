@@ -6,6 +6,8 @@ import recipes.entity.Recipe;
 import recipes.mapper.RecipeMapper;
 import recipes.repository.RecipeRepository;
 
+import java.util.Optional;
+
 @Service
 public class RecipeServiceImpl implements RecipeService {
 
@@ -27,5 +29,13 @@ public class RecipeServiceImpl implements RecipeService {
         return recipeRepository.findById(id)
                 .map(recipeMapper::recipeToDTO)
                 .orElseThrow(IllegalArgumentException::new);
+    }
+
+    @Override
+    public void deleteRecipe(long id) {
+        Optional<Recipe> existingRecipe = recipeRepository.findById(id);
+
+        recipeRepository.delete(existingRecipe
+                .orElseThrow(IllegalArgumentException::new));
     }
 }

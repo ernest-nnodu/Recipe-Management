@@ -32,4 +32,11 @@ public class RecipeController {
     public RecipeDTO getRecipe(@PathVariable(name = "id") long id) {
         return recipeService.getRecipe(id);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteRecipe(@PathVariable(name = "id") long id) {
+
+        recipeService.deleteRecipe(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

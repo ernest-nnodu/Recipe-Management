@@ -12,4 +12,9 @@ public class RecipeGlobalExceptionHandler {
     public ResponseEntity<?> recipeIDNotFoundExceptionHandler() {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler({Exception.class})
+    public ResponseEntity<?> wrongRecipe() {
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 }
